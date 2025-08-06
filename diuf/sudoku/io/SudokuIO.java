@@ -223,9 +223,9 @@ public class SudokuIO {
             if (result == RES_OK) // success
                 return null;
             if (result == RES_WARN) // warning
-                return new ErrorMessage(WARNING_MSG, false);
+                return ErrorMessage(WARNING_MSG, false);
             else // error
-                return new ErrorMessage(ERROR_MSG, true);
+                return ErrorMessage(ERROR_MSG, true);
         } catch (IOException ex) {
             return new ErrorMessage("Error while copying:\n{0}", ex);
         } catch (UnsupportedFlavorException ex) {
@@ -237,7 +237,11 @@ public class SudokuIO {
             } catch(Exception ex) {}
         }
     }
-
+	private static ErrorMessage ErrorMessage(String warningMsg, boolean b) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
     public static void saveToClipboard(Grid grid) {
         StringWriter writer = new StringWriter();
         try {
@@ -258,9 +262,9 @@ public class SudokuIO {
             if (result == RES_OK)
                 return null;
             else if (result == RES_WARN)
-                return new ErrorMessage(WARNING_MSG, false);
+                return ErrorMessage(WARNING_MSG, false);
             else
-                return new ErrorMessage(ERROR_MSG, true);
+                return ErrorMessage(ERROR_MSG, true);
         } catch (FileNotFoundException ex) {
             return new ErrorMessage("File not found: {0}", file);
         } catch (IOException ex) {
